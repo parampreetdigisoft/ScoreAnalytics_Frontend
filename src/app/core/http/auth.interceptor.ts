@@ -11,6 +11,8 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { StorageKeyEnum } from '../enums/StorageKeyEnum';
+import { LoginResponse } from '../models/UserInfo';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -23,15 +25,18 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.authService.getAuthToken();
-    
-    if (token) {
-      request = this.addToken(request, token);
-    }
+   if (!(request.url.endsWith('register') || request.url.endsWith('login') || request.url.endsWith('ForgotPassword'))) {
+      const tokenData = JSON.parse(localStorage.getItem(StorageKeyEnum.TokenKey) || '{}') as LoginResponse;
+      if (tokenData) {
+        request = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${tokenData.token}` || '',
+          }
+        });
+      } else {
+        return of();
+      }
 
-    // Mock authentication for demo purposes
-    if (request.url.includes('/api/auth/login')) {
-      return this.handleMockLogin(request);
     }
 
     return next.handle(request).pipe(
@@ -44,40 +49,7 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 
-  private handleMockLogin(request: HttpRequest<unknown>): Observable<HttpEvent<unknown>> {
-    const body = request.body as any;
-    const mockUsers = {
-      'admin@usvi.com': { id: 1, email: 'admin@usvi.com', role: 'admin', name: 'Admin User' },
-      'analyst@usvi.com': { id: 2, email: 'analyst@usvi.com', role: 'analyst', name: 'Analyst User' },
-      'evaluator@usvi.com': { id: 3, email: 'evaluator@usvi.com', role: 'evaluator', name: 'Evaluator User' },
-      'cityuser@usvi.com': { id: 4, email: 'cityuser@usvi.com', role: 'city-user', name: 'City User' }
-    };
-    const mockTokens = {
-      'admin@usvi.com': 'mock-jwt-token-admin',
-      'analyst@usvi.com': 'mock-jwt-token-analyst',
-      'evaluator@usvi.com': 'mock-jwt-token-evaluator',
-      'cityuser@usvi.com': 'mock-jwt-token-cityuser'
-    };
-
-    const user = mockUsers[body.email as keyof typeof mockUsers];
-    
-    if (user && body.password === 'password') {
-      const token = mockTokens[body.email as keyof typeof mockTokens];
-      const response = { token, user };
-      
-      // Simulate successful login
-      this.authService.setToken(token);
-      this.authService.setStoredUser(user);
-      this.authService.currentUserSubject.next(user);
-      
-      return of(new HttpResponse({ body: response }));
-    }
-    
-    return throwError(() => new HttpErrorResponse({ 
-      status: 401, 
-      error: { message: 'Invalid credentials' } 
-    }));
-  }
+  
 
   private addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
     return request.clone({

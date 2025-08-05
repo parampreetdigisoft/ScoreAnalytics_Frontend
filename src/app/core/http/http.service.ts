@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class HttpService {
-  private urlBase =  environment.apiUrl + '/api';
+  private urlBase = environment.apiUrl + '/api';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' } || { 'Content-Type': 'text' });
   private options = { headers: this.headers };
 
@@ -40,7 +40,7 @@ export class HttpService {
     );
   }
 
-  public getWithQueryParams(url: string, params = null) { 
+  public getWithQueryParams(url: string, params = null) {
     const options = { headers: this.headers, params: null, };
     if (params) {
       options.params = params;
@@ -50,14 +50,14 @@ export class HttpService {
     );
   }
 
-  public post(url: string, body: any) {
-    return this.http.post(`${this.urlBase}/${url}`, body, this.options).pipe(
+  public post<TRequest = any, TResponse = any>(url: string, body: TRequest): Observable<TResponse> {
+    return this.http.post<TResponse>(`${this.urlBase}/${url}`, body, this.options).pipe(
       catchError(this.handleError)
     );
   }
 
-  public postWithQueryParams(url: string, body: any, params:any) {
-    return this.http.post(`${this.urlBase}/${url}` +  this.getQueryString(body), params, this.options).pipe(
+  public postWithQueryParams(url: string, body: any, params: any) {
+    return this.http.post(`${this.urlBase}/${url}` + this.getQueryString(body), params, this.options).pipe(
       catchError(this.handleError)
     );
   }
@@ -94,7 +94,7 @@ export class HttpService {
     );
   }
 
-  getQueryString = (obj:any) => {
+  getQueryString = (obj: any) => {
     const qp = new URLSearchParams();
     Object.keys(obj).forEach(el => {
       qp.set(el, obj[el]);

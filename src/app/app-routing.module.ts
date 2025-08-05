@@ -15,11 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule),
     canActivate: [RoleGuard],
     canLoad: [RoleGuard],
     data: { role: 'admin' }

@@ -1,25 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-export interface User {
-  id: number;
-  email: string;
-  role: string;
-  name: string;
-}
-
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-export interface LoginResponse {
-  token: string;
-  user: User;
-}
+import { LoginRequest, LoginResponse, User } from '../models/UserInfo';
+import { HttpService } from '../http/http.service';
+import { StorageKeyEnum } from '../enums/StorageKeyEnum';
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +13,12 @@ export class AuthService {
   public currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
   
-  private tokenKey = 'auth_token';
-  private userKey = 'current_user';
+  private tokenKey = StorageKeyEnum.TokenKey;
+  private userKey = StorageKeyEnum.UserKey;
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private httpService: HttpService,
   ) {
     this.loadStoredUser();
   }
@@ -50,9 +35,9 @@ export class AuthService {
   login(credentials: LoginRequest): Observable<LoginResponse> {
     // For demo purposes, using mock service
     // Replace with your actual API endpoint: this.http.post<LoginResponse>('/api/auth/login', credentials)
-    return this.http.post<LoginResponse>('/api/auth/login', credentials)
+    return this.httpService.post<LoginRequest,LoginResponse>('Auth/login', credentials)
       .pipe(
-        tap(response => {
+        tap(response  => {
           this.setToken(response.token);
           this.setStoredUser(response.user);
           this.currentUserSubject.next(response.user);
@@ -90,7 +75,7 @@ export class AuthService {
   }
 
   refreshToken(): Observable<any> {
-    return this.http.post('/api/auth/refresh', {})
+    return this.httpService.post('auth/refresh', {})
       .pipe(
         tap((response: any) => {
           this.setToken(response.token);

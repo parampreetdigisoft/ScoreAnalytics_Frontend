@@ -1,0 +1,67 @@
+<div class="login-container">
+      <div class="login-card">
+        <h2>Login to USVI App</h2>
+        
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email" 
+              placeholder="Enter your email"
+              class="form-control"
+              [class.error]="isFieldInvalid('email')"
+            />
+            <div class="error-message" *ngIf="isFieldInvalid('email')">
+              Please enter a valid email address
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              formControlName="password" 
+              placeholder="Enter your password"
+              class="form-control"
+              [class.error]="isFieldInvalid('password')"
+            />
+            <div class="error-message" *ngIf="isFieldInvalid('password')">
+              Password is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="loginForm.invalid || isLoading"
+            >
+              {{ isLoading ? 'Logging in...' : 'Login' }}
+            </button>
+          </div>
+
+          <div class="error-message" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+        </form>
+
+        <div class="demo-accounts">
+          <h4>Demo Accounts:</h4>
+          <div class="demo-account" (click)="loginAsDemo('admin')">
+            <strong>Admin:</strong> admin&#64;usvi.com / password
+          </div>
+          <div class="demo-account" (click)="loginAsDemo('analyst')">
+            <strong>Analyst:</strong> analyst&#64;usvi.com / password
+          </div>
+          <div class="demo-account" (click)="loginAsDemo('evaluator')">
+            <strong>Evaluator:</strong> evaluator&#64;usvi.com / password
+          </div>
+          <div class="demo-account" (click)="loginAsDemo('city-user')">
+            <strong>City User:</strong> cityuser&#64;usvi.com / password
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,9 +1,7 @@
 export enum StorageKeyEnum {
     UserInfo = 'UserInfo',
-    TimeTracker ='TimeTracker',
-    OrderStatusId ='OrderStatusId',
-    TabId ='TabId',
-    OrderTypeId='OrderTypeId'
+    TokenKey = 'auth_token',
+    UserKey = 'current_user'
 }
 
 export enum SidebarEnum {
