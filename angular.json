@@ -83,6 +83,9 @@
         }
       }
     },
-    "defaultProject": "usvi-angular-app"
+    "defaultProject": "usvi-angular-app",
+    "cli": {
+      "analytics": false
+    }
   }
   

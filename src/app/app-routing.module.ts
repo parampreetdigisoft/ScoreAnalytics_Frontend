@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { RoleGuard } from './services/role.guard';
+import { RoleGuard } from './core/services/role.guard';
 
 const routes: Routes = [
   {
@@ -26,21 +26,21 @@ const routes: Routes = [
   },
   {
     path: 'analyst',
-    loadChildren: () => import('./analyst/analyst.module').then(m => m.AnalystModule),
+    loadChildren: () => import('./features/analyst/analyst.module').then(m => m.AnalystModule),
     canActivate: [RoleGuard],
     canLoad: [RoleGuard],
     data: { role: 'analyst' }
   },
   {
     path: 'evaluator',
-    loadChildren: () => import('./evaluator/evaluator.module').then(m => m.EvaluatorModule),
+    loadChildren: () => import('./features/evaluator/evaluator.module').then(m => m.EvaluatorModule),
     canActivate: [RoleGuard],
     canLoad: [RoleGuard],
     data: { role: 'evaluator' }
   },
   {
     path: 'city-user',
-    loadChildren: () => import('./city-user/city-user.module').then(m => m.CityUserModule),
+    loadChildren: () => import('./features/city-user/city-user.module').then(m => m.CityUserModule),
     canActivate: [RoleGuard],
     canLoad: [RoleGuard],
     data: { role: 'city-user' }

@@ -2,24 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './component/admin.component';
-import { AdminRoutingModule } from './admin-routing.module';
+
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminComponent
-  }
-];
+  { 
+    path: '', component: AdminComponent, children:[
+      {
 
+      }
+    ]
+  }
+]
 @NgModule({
-  declarations: [
-    AdminComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
-    AdminRoutingModule
+    RouterModule.forChild(routes)
   ],
-  bootstrap: [AdminComponent]
+  exports: [RouterModule]
 })
-export class AdminModule { } 
+export class AdminRoutingModule { }

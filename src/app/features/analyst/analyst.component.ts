@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-analyst',
   template: `
     <div class="dashboard">
       <header class="dashboard-header">
-        <h1>Admin Dashboard</h1>
+        <h1>Analyst Dashboard</h1>
         <div class="user-info">
           <span>Welcome, {{ currentUser?.name }}</span>
           <button (click)="logout()" class="btn-logout">Logout</button>
@@ -15,18 +15,18 @@ import { AuthService } from '../services/auth.service';
       
       <div class="dashboard-content">
         <div class="card">
-          <h3>User Management</h3>
-          <p>Manage system users and permissions</p>
-        </div>
-        
-        <div class="card">
-          <h3>System Settings</h3>
-          <p>Configure application settings</p>
+          <h3>Data Analysis</h3>
+          <p>Analyze project data and generate reports</p>
         </div>
         
         <div class="card">
           <h3>Reports</h3>
-          <p>View system reports and analytics</p>
+          <p>Create and view analytical reports</p>
+        </div>
+        
+        <div class="card">
+          <h3>Statistics</h3>
+          <p>View project statistics and metrics</p>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@ import { AuthService } from '../services/auth.service';
     }
   `]
 })
-export class AdminComponent {
+export class AnalystComponent {
   currentUser = this.authService.getCurrentUser();
 
   constructor(private authService: AuthService) {}

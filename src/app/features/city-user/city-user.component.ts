@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
-  selector: 'app-analyst',
+  selector: 'app-city-user',
   template: `
     <div class="dashboard">
       <header class="dashboard-header">
-        <h1>Analyst Dashboard</h1>
+        <h1>City User Dashboard</h1>
         <div class="user-info">
           <span>Welcome, {{ currentUser?.name }}</span>
           <button (click)="logout()" class="btn-logout">Logout</button>
@@ -15,18 +15,18 @@ import { AuthService } from '../services/auth.service';
       
       <div class="dashboard-content">
         <div class="card">
-          <h3>Data Analysis</h3>
-          <p>Analyze project data and generate reports</p>
+          <h3>Project Submissions</h3>
+          <p>Submit and manage your projects</p>
         </div>
         
         <div class="card">
-          <h3>Reports</h3>
-          <p>Create and view analytical reports</p>
+          <h3>Project Status</h3>
+          <p>Track the status of your submissions</p>
         </div>
         
         <div class="card">
-          <h3>Statistics</h3>
-          <p>View project statistics and metrics</p>
+          <h3>Feedback</h3>
+          <p>View feedback and evaluations</p>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@ import { AuthService } from '../services/auth.service';
     }
   `]
 })
-export class AnalystComponent {
+export class CityUserComponent {
   currentUser = this.authService.getCurrentUser();
 
   constructor(private authService: AuthService) {}

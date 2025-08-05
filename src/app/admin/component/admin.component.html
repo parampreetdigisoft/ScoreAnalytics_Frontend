@@ -1,0 +1,26 @@
+<div class="dashboard">
+      <header class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <div class="user-info">
+          <span>Welcome, {{ currentUser?.name }}</span>
+          <button (click)="logout()" class="btn-logout">Logout</button>
+        </div>
+      </header>
+      
+      <div class="dashboard-content">
+        <div class="card">
+          <h3>User Management</h3>
+          <p>Manage system users and permissions</p>
+        </div>
+        
+        <div class="card">
+          <h3>System Settings</h3>
+          <p>Configure application settings</p>
+        </div>
+        
+        <div class="card">
+          <h3>Reports</h3>
+          <p>View system reports and analytics</p>
+        </div>
+      </div>
+    </div>

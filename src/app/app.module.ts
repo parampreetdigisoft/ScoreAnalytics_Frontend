@@ -6,7 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthInterceptor } from './core/http/auth.interceptor';
+import { HttpService } from './core/http/http.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppRoutingModule
   ],
   providers: [
+    HttpService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
