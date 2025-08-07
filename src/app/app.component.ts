@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div>
-      <h1>USVI Angular App</h1>
       <router-outlet></router-outlet>
     </div>
   `,
