@@ -1,0 +1,29 @@
+<div class="body-outer d-flex">
+    <app-sidebar></app-sidebar>
+    <div class="page-wrapper">
+      <app-header></app-header>
+      <router-outlet></router-outlet>
+    </div>
+</div>
+
+
+
+<!-- 
+
+<div class="home-container">
+      <div class="welcome-card">
+        <h2>Welcome to USVI Angular App</h2>
+        <p>This is the home page.</p>
+        
+        <div *ngIf="!isAuthenticated" class="auth-section">
+          <p>Please log in to access the application.</p>
+          <button (click)="goToLogin()" class="btn-login">Login</button>
+        </div>
+        
+        <div *ngIf="isAuthenticated" class="user-section">
+          <p>Welcome back, {{ currentUser?.name }}!</p>
+          <p>Role: {{ currentUser?.role }}</p>
+          <button (click)="logout()" class="btn-logout">Logout</button>
+        </div>
+      </div>
+    </div> -->

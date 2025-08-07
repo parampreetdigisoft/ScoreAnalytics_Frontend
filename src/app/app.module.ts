@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './core/http/auth.interceptor';
 import { HttpService } from './core/http/http.service';
+import { SharedModule } from './shared/share.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpService } from './core/http/http.service';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [
     HttpService,

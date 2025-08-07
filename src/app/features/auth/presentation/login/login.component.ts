@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -25,12 +26,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // Redirect if already authenticated
-    if (this.authService.isAuthenticated()) {
-      this.redirectBasedOnRole();
+    ngOnInit(): void {
+      debugger
+      // Redirect if already authenticated
+      if (this.authService.isAuthenticated()) {
+        this.redirectBasedOnRole();
+      }
     }
-  }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
