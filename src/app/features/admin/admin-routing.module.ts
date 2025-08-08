@@ -10,16 +10,20 @@ import { AssesmentComponent } from './container/assesment/assesment.component';
 
 
 const routes: Routes = [
-  { 
-    path: '', component: AdminComponent, children:[
-      {path:'city', component: CityComponent},
-      {path:'anayst', component: AnalystComponent},
-      {path:'piller', component: PillarComponent},
-      {path:'question', component: QuestionComponent},
-      {path:'assesment', component: AssesmentComponent}
+  {
+    path: '',
+    component: AdminComponent,
+    children: [
+      { path: 'admin/', redirectTo: 'city', pathMatch: 'full' }, // default child route
+      { path: 'city', component: CityComponent },
+      { path: 'analyst', component: AnalystComponent }, // fixed typo
+      { path: 'pillar', component: PillarComponent },
+      { path: 'question', component: QuestionComponent },
+      { path: 'assesment', component: AssesmentComponent }
     ]
   }
-]
+];
+
 @NgModule({
   declarations: [],
   imports: [

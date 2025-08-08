@@ -1,16 +1,18 @@
 export interface UserInfo {
-userId: number;
-firstName:string;
-createdBy:number;
-createdDate:string;
-email:string;
-isActive:number;
-isDeleted:boolean
-isEmailConfirmed:boolean;
-tokenExpirationDate:string;
-isLoggedIn:true;
-roleId:number;
-profileImagePath:string;
+  userId: number;
+  fullName:string;
+  email:string;
+  phone:string;
+  isActive:number;
+  role:string;
+  createdBy:number;
+  createdAt:string;
+  isDeleted:boolean
+  isEmailConfirmed:boolean;
+  isLoggedIn:true;
+  tokenExpirationDate:string;
+  profileImagePath:string;
+  token: string;
 }
 
 export interface RolePermission {

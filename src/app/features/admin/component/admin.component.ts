@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
-
 
 @Component({
   selector: 'app-admin',
@@ -8,11 +6,11 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  currentUser = this.authService.getCurrentUser();
+  // currentUser = this.authService.getCurrentUser();
 
-  constructor(private authService: AuthService) {}
+  // constructor(private authService: AuthService) {}
 
-  logout(): void {
-    this.authService.logout();
-  }
+  // logout(): void {
+  //   this.authService.logout();
+  // }
 } 

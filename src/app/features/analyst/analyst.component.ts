@@ -1,34 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
+
 
 @Component({
   selector: 'app-analyst',
   template: `
     <div class="dashboard">
-      <header class="dashboard-header">
-        <h1>Analyst Dashboard</h1>
-        <div class="user-info">
-          <span>Welcome, {{ currentUser?.name }}</span>
-          <button (click)="logout()" class="btn-logout">Logout</button>
-        </div>
-      </header>
-      
-      <div class="dashboard-content">
-        <div class="card">
-          <h3>Data Analysis</h3>
-          <p>Analyze project data and generate reports</p>
-        </div>
-        
-        <div class="card">
-          <h3>Reports</h3>
-          <p>Create and view analytical reports</p>
-        </div>
-        
-        <div class="card">
-          <h3>Statistics</h3>
-          <p>View project statistics and metrics</p>
-        </div>
-      </div>
+      app-analyst
     </div>
   `,
   styles: [`
@@ -92,11 +69,11 @@ import { AuthService } from '../../core/services/auth.service';
   `]
 })
 export class AnalystComponent {
-  currentUser = this.authService.getCurrentUser();
+  // currentUser = this.authService.getCurrentUser();
 
-  constructor(private authService: AuthService) {}
+  // constructor(private authService: AuthService) {}
 
-  logout(): void {
-    this.authService.logout();
-  }
+  // logout(): void {
+  //   this.authService.logout();
+  // }
 } 

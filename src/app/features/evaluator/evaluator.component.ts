@@ -1,36 +1,10 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
+
 
 
 @Component({
   selector: 'app-evaluator',
-  template: `
-    <div class="dashboard">
-      <header class="dashboard-header">
-        <h1>Evaluator Dashboard</h1>
-        <div class="user-info">
-          <span>Welcome, {{ currentUser?.name }}</span>
-          <button (click)="logout()" class="btn-logout">Logout</button>
-        </div>
-      </header>
-      
-      <div class="dashboard-content">
-        <div class="card">
-          <h3>Project Evaluation</h3>
-          <p>Evaluate and review project submissions</p>
-        </div>
-        
-        <div class="card">
-          <h3>Assessment Tools</h3>
-          <p>Access evaluation tools and criteria</p>
-        </div>
-        
-        <div class="card">
-          <h3>Evaluation History</h3>
-          <p>View past evaluations and feedback</p>
-        </div>
-      </div>
-    </div>
+  template: ` <div>evaluator</div>
   `,
   styles: [`
     .dashboard {
@@ -93,11 +67,11 @@ import { AuthService } from 'src/app/core/services/auth.service';
   `]
 })
 export class EvaluatorComponent {
-  currentUser = this.authService.getCurrentUser();
 
-  constructor(private authService: AuthService) {}
+
+  constructor() {}
 
   logout(): void {
-    this.authService.logout();
+    //this.authService.logout();
   }
 } 
