@@ -1,0 +1,18 @@
+.main_area
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sidebar_area
+{
+    width: 320px;
+    padding: 0 20px 20px 20px;
+}
+
+.content_area
+{
+    flex: 1;
+    padding-bottom: 20px;
+    padding-right: 20px;
+}

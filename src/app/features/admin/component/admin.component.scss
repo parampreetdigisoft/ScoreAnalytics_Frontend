@@ -55,3 +55,12 @@
       color: #666;
       margin-bottom: 0;
     }
+
+    .inner_content_area
+    {
+      background-color: var(--background-Color);
+    border: 1px solid var(--Light-Border-Color);
+    height: 100%;
+    border-radius: 30px;
+    padding: 40px;
+    }

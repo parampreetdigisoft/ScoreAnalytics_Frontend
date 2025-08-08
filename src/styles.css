@@ -3,11 +3,17 @@
 :root
 {
 	--Primary-Color:#397b69;
+	--Secondary-Color:#EFBF04;
 	--Hover-Primary-color: #408f79;
     --White-Color: #ffffff;
 	--Text-Color:#2C2C2C;
 	--Border-Color:#E4E4E4;
 	--background-Color:#F7F7F7;
+	--Light-Text-Color:#525856;
+	--Light-Bg-Color:#7AC2AE;
+	--Dark-Bg-Color:#304A43;
+	--Light-Border-Color:rgba(0, 0, 0, 0.02);
+	--Green-text-Color:#304A43;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -61,4 +67,165 @@ a, a:hover
 img, svg
 {
 	display: block;
+}
+
+.common_button{
+    border-radius: 500px;
+    background: var(--Primary-Color);
+    padding: 9px 20px;
+    text-align: center;
+    border: 1px solid var(--Primary-Color);
+    color: var(--White-Color);
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 20px;
+transition: 0.3s;
+    display: flex;
+    grid-gap: 8px;
+	justify-content: center;
+}
+
+.common_button:hover
+{
+  background-color: var(--Hover-Primary-color);
+}
+
+.page_head
+{
+	color: var(--Text-Color);
+font-size: 25px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.heading_area
+{
+	margin-bottom: 30px;
+}
+
+.table_outer .table th, .table_outer .table td
+{
+	
+	vertical-align: middle;
+}
+
+.table_outer .table th
+{
+color: var(--Green-text-Color);
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+padding: 14px 20px;
+
+}
+
+.table_outer .table td
+{
+	color: var(--Light-Text-Color);
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+padding: 18px 20px;
+}
+
+.action_icons {
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+}
+
+.table_outer .table tr th:first-child
+{
+	border-top-left-radius: 15px;
+}
+
+.table_outer .table tr th:last-child
+{
+	border-top-right-radius: 15px;
+}
+
+
+.cus_pagination {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.pagi_label {
+    color: var(--Light-Text-Color);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.cus_pagination > li:not(:first-child, :last-child) span {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: var(--background-Color);
+    color: var(--Text-Color);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.3s;
+	border: 1px solid var(--Border-Color);
+}
+
+.cus_pagination > li:not(:first-child, :last-child) span.action {
+    background-color: var(--Primary-Color);
+    color: var(--White-Color);
+	border-color: var(--Primary-Color);
+}
+
+.cus_pagination > li:not(:first-child, :last-child) span:hover {
+    background-color: var(--Primary-Color);
+    color: var(--White-Color);
+	border-color: var(--Primary-Color);
+}
+.pointer_none {
+    pointer-events: none;
+}
+.pagination_outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+	background-color: var(--White-Color);
+	padding: 15px 25px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.showing_data
+{
+	color: var(--Light-Text-Color);
+	font-size: 14px;
+}
+
+.table_outer .table
+{
+	margin-bottom: 0;
+}
+
+.action_th
+{
+	width: 110px;
 }
