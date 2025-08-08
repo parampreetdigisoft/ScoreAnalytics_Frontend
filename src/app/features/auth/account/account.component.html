@@ -1,14 +1,14 @@
 
 <div *ngIf="roleName==='login'">
-    <app-login ></app-login>
+   <app-login (UserLogin)="login($event)" [loading]="loading"></app-login>
 </div>
 
 <div *ngIf="roleName==='sign-up'">
     <app-sign-up ></app-sign-up>
 </div>
 <div *ngIf="roleName==='forgot-password'">
-    <app-forgot-password ></app-forgot-password>
+       <app-forgot-password (forgotPassword)="sendEmail($event)" [loading]="loading" [isSuccess]="isSuccess"></app-forgot-password>
 </div>
 <div *ngIf="roleName==='reset-password'">
-    <app-reset-password ></app-reset-password>
+       <app-reset-password (resetPassword)="resetPassword($event)" [loading]="loading" [isSuccess]="isSuccess"></app-reset-password>
 </div>

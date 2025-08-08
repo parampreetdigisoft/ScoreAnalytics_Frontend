@@ -25,6 +25,7 @@
               ],
               "scripts": [],
               "namedChunks": true,
+              "sourceMap": true,
               "vendorChunk": true
             },
             "configurations": {
@@ -38,7 +39,7 @@
                 "optimization": true,
                 "outputHashing": "all",
                 "sourceMap": false,
-                "extractCss": true,
+                
                 "namedChunks": false,
                 "aot": true,
                 "extractLicenses": true,
@@ -58,12 +59,12 @@
               }
             }
           },
-          "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
-            "options": {
-              "browserTarget": "usvi-angular-app:build"
-            }
-          },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "usvi-angular-app:build"
+          }
+        },
           "test": {
             "builder": "@angular-devkit/build-angular:karma",
             "options": {
@@ -86,7 +87,6 @@
         }
       }
     },
-    "defaultProject": "usvi-angular-app",
     "cli": {
       "analytics": false
     }

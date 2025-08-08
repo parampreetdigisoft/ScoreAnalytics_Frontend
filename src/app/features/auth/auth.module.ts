@@ -11,6 +11,7 @@ import { ForgotPasswordComponent } from './presentation/forgot-password/forgot-p
 import { ResetPasswordComponent } from './presentation/reset-password/reset-password.component';
 import { LoginComponent } from './presentation/login/login.component';
 import { SharedModule } from 'src/app/shared/share.module';
+import { AccountPopUpComponent } from './presentation/account-pop-up/account-pop-up.component';
 
 
 const routes: Routes = [{ path: '', component: AccountComponent,  data: { roles: [] },children: [
@@ -26,7 +27,8 @@ const routes: Routes = [{ path: '', component: AccountComponent,  data: { roles:
     SignUpComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccountPopUpComponent
   ],
   imports: [
     CommonModule,
